@@ -1,4 +1,4 @@
-
+# HTB Resolute
 1. RPC Enumeration - Abusing querydispinfo
 2. CrackMapExec SMB Authentication Spraying
 3. Abusing WinRM - EvilWinRM
