@@ -1,4 +1,6 @@
 # HTB Sniper
+# I had several easily fixable errors that gave me a big headache on this box.
+
 1. Skills: 
 2. Local File Inclusion (LFI) 
 3. Remote File Inclusion (RFI) [Failed] 
