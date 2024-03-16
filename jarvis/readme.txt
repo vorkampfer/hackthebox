@@ -1,4 +1,7 @@
 # HTB Jarvis
+1. exploit_jarvis.py is an automation script that takes advantage of lfi vulnerabiltiy to get RCE.
+2. Here is the payload. http://127.0.0.1/phpmyadmin/index.php?target=db_sql.php%253f/../../../../../../etc/passwd
+
 Room.php is  only page that accepts user input, basic testing for SQL Injection
 Using wfuzz  fuzz for special characters 
 Showing several  to test for SQL Injection (subtraction and hex())
