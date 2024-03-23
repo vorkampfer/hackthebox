@@ -2,9 +2,11 @@
 ## Linux Insane
 
 ### Synopsis:
-Brainfuck was one of the first boxes released on HackTheBox. It’s a much more unrealistic and CTF style box than would appear on HTB today, 
-but there are still elements of it that can be a good learning opportunity. There’s WordPress exploitation and a bunch of crypto, including 
-RSA and Vigenere. ~0xdf
+Brainfuck was one of the first boxes released on HackTheBox. 
+It’s a much more unrealistic and CTF style box than would appear 
+on HTB today, but there are still elements of it that can be a
+good learning opportunity. There’s WordPress exploitation and a
+bunch of crypto, including RSA and Vigenere. ~0xdf
 
 ### Skilset:
 1. TLS Certificate Inspection
