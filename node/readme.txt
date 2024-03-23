@@ -6,7 +6,7 @@
 Node is about enumerating a Express NodeJS application to find an API endpoint that shares too much data., including user password hashes. 
 To root the box, there’s a simple return to libc buffer overflow exploit. I had some fun finding three other ways to get the root flag, 
 as well as one that didn’t work out. ~0xdf
-```
+
 ### Skill-set:
 1. Information Leakage
 2. API Enumeration
