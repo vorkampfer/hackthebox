@@ -11,8 +11,6 @@ a listener to be setup first. The second one is compeletly automated. Just follo
 instructions. The privesc is super simple. All in all a very fun box, and a great code-along imo.
 
 ### Skill-set:
-```Ruby
 1. SQLI (Error Based)
 2. SQLI -> RCE (INTO OUTFILE)
 3. Information Leakage
-```
