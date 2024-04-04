@@ -1,7 +1,8 @@
 # HTB Calamity
 ### Linux
 ### Hard
-1. There are 2 actually 3 coding projects from this one box.
+1. There are 2 actually 3 coding projects from this one box. The lxd_privesc.sh
+can be downloaded from searchsploit.
 2. There is a fake_shell.sh, an autopwnV1.py and an autopwn_upgraded.py.
 3. The fake_shell.sh and autopwn_part1.py work great. 
 4. The autopwn_part2.py works but you need to mess with it.
